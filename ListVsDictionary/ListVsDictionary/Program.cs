@@ -22,13 +22,13 @@ namespace ListVsDictionary
             Country country4 = new Country() { ID = "GBR", Ime = "UNITED KINGDOM", GlavniGrad = "London" };
             Country country5 = new Country() { ID = "CRO", Ime = "CROATIA", GlavniGrad = "Zagreb" };
 
-            List<Country> listCountries = new List<Country>();
-            listCountries.Add(country1);
-            listCountries.Add(country2);
-            listCountries.Add(country3);
-            listCountries.Add(country4);
-            listCountries.Add(country5);
-            listCountries.Add(country1);
+            Dictionary<string, Country> dictionaryCountries = new Dictionary<string, Country>();
+            dictionaryCountries.Add(country1.ID, country1);
+            dictionaryCountries.Add(country2.ID, country2);
+            dictionaryCountries.Add(country3.ID, country3);
+            dictionaryCountries.Add(country4.ID, country4);
+            dictionaryCountries.Add(country5.ID, country5);
+
             string userChoice = string.Empty;
             do
             {
@@ -37,7 +37,7 @@ namespace ListVsDictionary
                 //pronalazak grada po ID-u koji je unesao korisnik
                 try
                 {
-                    Country c = listCountries.Find(Id => Id.ID == strCountryID);
+                    Country c = dictionaryCountries[strCountryID];
                     Console.WriteLine($"Country = {c.Ime}, Capital City = {c.GlavniGrad}");
                 }
                 catch (Exception e)
